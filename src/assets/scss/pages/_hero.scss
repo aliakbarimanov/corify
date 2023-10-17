@@ -3,6 +3,11 @@
   .row {
     justify-content: center;
     align-items: center;
+
+    .swiper-pagination-bullet-active{
+      background-color: #ce8339;
+    }
+
     .hero {
       position: relative;
       .heroImg {

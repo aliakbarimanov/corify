@@ -5,18 +5,19 @@ import carsDb from "../../db/carsDb";
 import CarCard from "../../components/CarCard";
 
 // useState
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const OurCars = () => {
   const [category, setCategory] = useState([]);
+  const [active, setActive] = useState("all");
 
-  useEffect(()=>{
-    let allCategories = carsDb.map((item)=>item.category);
-    let categories = new Set(allCategories);
+  useEffect(() => {
+    const allCategories = carsDb.map((item) => item.category);
+    const categories = new Set(allCategories);
     setCategory([...categories]);
-  },[]);
+  }, []);
 
-  console.log(category);
+
 
   return (
     <section className="ourCarsSection">
@@ -25,14 +26,13 @@ const OurCars = () => {
           <div className="ourCarsHead">
             <h2>OUR CARS</h2>
             <ul className="categoryList">
-              <li className="categoryItem active">All</li>
+              <li className={`categoryItem ${active==="all" && "active"}`} onClick={setActive("all")}>All</li>
 
-              {
-                category.map((item, index)=>(
-                  <li className="categoryItem" key={index}>{item}</li>
-                ))
-              }
-
+              {category.map((item, index) => (
+                <li className={`categoryItem ${active===category && "active"}`} key={index} onClick={()=>{setActive(item)}}>
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
           <div className="carsBox">

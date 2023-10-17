@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // Images
 import heroBg from "../../assets/images/bmw.png";
-import cysler from "../../assets/images/cysler.png"
+import cysler from "../../assets/images/cysler.png";
 
 // React icons
 import { SlSpeedometer } from "react-icons/sl";
@@ -14,19 +14,27 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Hero = () => {
   return (
     <section className="heroSection">
       <div className="row">
         <Swiper
-          pagination={{
-            dynamicBullets: true,
+          loop={true}
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
           }}
-          modules={[Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
           <SwiperSlide>
