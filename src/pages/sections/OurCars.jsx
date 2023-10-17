@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 const OurCars = () => {
   const [category, setCategory] = useState([]);
   const [active, setActive] = useState("all");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const allCategories = carsDb.map((item) => item.category);
@@ -17,7 +18,19 @@ const OurCars = () => {
     setCategory([...categories]);
   }, []);
 
+  useEffect(() => {
+    filterData();
+  }, [active]);
 
+  const filterData = () => {
+    let filtered = carsDb.filter((item) => item.category.toLowerCase() === active.toLowerCase());
+
+    if (filtered.length !== 0) {
+      setData(filtered);
+    } else {
+      setData(carsDb);
+    }
+  }
 
   return (
     <section className="ourCarsSection">
@@ -26,17 +39,17 @@ const OurCars = () => {
           <div className="ourCarsHead">
             <h2>OUR CARS</h2>
             <ul className="categoryList">
-              <li className={`categoryItem ${active==="all" && "active"}`} onClick={setActive("all")}>All</li>
+              <li className={`categoryItem ${active === "all" && "active"}`} onClick={() => { setActive("all") }}>All</li>
 
               {category.map((item, index) => (
-                <li className={`categoryItem ${active===category && "active"}`} key={index} onClick={()=>{setActive(item)}}>
+                <li className={`categoryItem ${item === active && "active"}`} key={index} onClick={() => { setActive(item) }}>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
           <div className="carsBox">
-            {carsDb.map((item) => (
+            {data.map((item) => (
               <CarCard data={item} key={item.id} />
             ))}
           </div>
