@@ -1,18 +1,19 @@
 // Router
 import { Link } from "react-router-dom";
 
-const ShopCard = () => {
+const ShopCard = ({data}) => {
+
   return (
     <div className="shopCard">
       <div className="cardImg">
-        <img src="" alt="car-img" />
+        <img src={`http://localhost:5000/${data.productImage}`} alt={data.name} />
       </div>
       <div className="carInfo">
         <Link className="carTitle" to="/car-details">
-          Car name
+          {data.name}
         </Link>
-        <p className="carDetails">Details</p>
-        <p className="carPrice">$ 0.00</p>
+        <p className="carDetails">{data.details}</p>
+        <p className="carPrice">$ {data.price}</p>
       </div>
     </div>
   );
