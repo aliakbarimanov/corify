@@ -11,7 +11,7 @@ const Shop = () => {
   const [data, setData] = useState([]);
 
   const getAllData = async () => {
-    await axios.get("http://localhost:5000/api/products").then((res)=>setData(res.data));
+    await axios.get(process.env.REACT_APP_PRODUCTS).then((res)=>setData(res.data));
   }
 
   useEffect(()=>{

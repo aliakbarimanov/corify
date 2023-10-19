@@ -6,7 +6,7 @@ const ShopCard = ({data}) => {
   return (
     <div className="shopCard">
       <div className="cardImg">
-        <img src={`http://localhost:5000/${data.productImage}`} alt={data.name} />
+        <img src={`${process.env.REACT_APP_IMAGE}/${data.productImage}`} alt={data.name} />
       </div>
       <div className="carInfo">
         <Link className="carTitle" to="/car-details">
