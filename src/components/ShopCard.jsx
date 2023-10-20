@@ -1,7 +1,7 @@
 // Router
 import { Link } from "react-router-dom";
 
-const ShopCard = ({data}) => {
+const ShopCard = ({ data }) => {
 
   return (
     <div className="shopCard">
@@ -9,7 +9,7 @@ const ShopCard = ({data}) => {
         <img src={`${process.env.REACT_APP_IMAGE}/${data.productImage}`} alt={data.name} />
       </div>
       <div className="carInfo">
-        <Link className="carTitle" to="/car-details">
+        <Link className="carTitle" to={`/car-details/${data.id}`}>
           {data.name}
         </Link>
         <p className="carDetails">{data.details}</p>
