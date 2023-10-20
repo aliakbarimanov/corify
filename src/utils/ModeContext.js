@@ -2,10 +2,11 @@
 import { createContext, useState } from "react";
 
 export const Context = createContext();
-export const ModeContext = ({children}) => {
-    const [lightMode, setLightMode] = useState(false);
+export const ModeContext = ({ children }) => {
 
-    const changeTheme = (e) => {
+    const [lightMode, setLightMode] = useState();
+
+    const changeMode = (e) => {
         if (e.target.checked) {
             setLightMode(true);
         } else {
@@ -13,8 +14,8 @@ export const ModeContext = ({children}) => {
         }
     }
 
-    const globalStates = {changeTheme};
-    <Context.Provider value={globalStates}>
+    const globalStates = { changeMode };
+    return <Context.Provider value={globalStates}>
         <div className={lightMode ? 'lightMode' : ''}>{children}</div>
     </Context.Provider>
 }

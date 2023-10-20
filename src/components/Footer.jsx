@@ -1,6 +1,3 @@
-// import useContext
-import { useContext } from "react";
-
 // import icons
 import {
   FaTwitter,
@@ -10,9 +7,13 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
+// import Context
+import { useContext } from "react";
+import { Context } from "../utils/ModeContext";
+
 const Footer = () => {
 
-  const {changeTheme} = useContext(Context);
+  const {changeMode} = useContext(Context);
 
   return (
     <footer className="footer">
@@ -47,7 +48,7 @@ const Footer = () => {
               <option value="tr">Türkçe</option>
             </select>
             <label className="switch">
-              <input type="checkbox" onChange={changeTheme}/>
+              <input type="checkbox" onChange={changeMode}/>
               <span className="slider"></span>
             </label>
           </div>

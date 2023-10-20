@@ -14,10 +14,13 @@ import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+// import ModeContext
+import { ModeContext } from "./utils/ModeContext";
+
 const App = () => {
 
   return (
-    <>
+    <ModeContext>
       <Header />
       <Routes>
         <Route path="/cart" element={<Cart />} />
@@ -29,7 +32,7 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </>
+    </ModeContext>
   );
 };
 
