@@ -1,3 +1,7 @@
+// import t
+import {t} from "useTranslation";
+
+// import useState
 import { useState } from "react";
 
 // Router
@@ -30,7 +34,7 @@ const Header = () => {
           <nav className="navBar">
             <ul className="navList">
               <li className="navItem">
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/">{t("home")}</NavLink>
               </li>
               <li className="navItem">
                 <NavLink to="/shop">Shop</NavLink>
