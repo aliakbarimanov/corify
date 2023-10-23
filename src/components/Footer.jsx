@@ -11,20 +11,30 @@ import {
 import { useContext } from "react";
 import { Context } from "../utils/ModeContext";
 
+// import i18n hook
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
 
   const {changeMode} = useContext(Context);
+
+  const {i18n, t} = useTranslation();
+
+  const changeLng = (e) => {
+    let choosedLng = e.target.value;
+    i18n.changeLanguage(choosedLng);
+  }
 
   return (
     <footer className="footer">
       <div className="container">
         <div className="row">
           <p className="copyright">
-            All rights reserved <span>Tarlan Alijanov</span> ©{" "}
+            {t("footer.allRightsReserved")} <span>Tarlan Alijanov</span> ©{" "}
             {new Date().getFullYear()}
           </p>
           <ul className="socialList">
-            <li className="socialItem">Follow us</li>
+            <li className="socialItem">{t("footer.followUs")}</li>
             <li className="socialItem">
               <FaTwitter />
             </li>
@@ -42,10 +52,11 @@ const Footer = () => {
             </li>
           </ul>
           <div className="inps">
-            <select name="language" className="language">
+            <select name="language" className="language" onChange={changeLng} value={i18n.language}>
+              <option value="">Choose language..</option>
               <option value="en">English</option>
               <option value="az">Azərbaycanca</option>
-              <option value="tr">Türkçe</option>
+              <option value="ru">Русский</option>
             </select>
             <label className="switch">
               <input type="checkbox" onChange={changeMode}/>

@@ -10,7 +10,7 @@ i18n
     .use(initReactI18next)
     .init({
         fallbackLng: "en",
-        lng: "aze",
+        // lng: "en",
     });
 
 

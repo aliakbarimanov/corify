@@ -1,6 +1,3 @@
-// import t
-import {t} from "useTranslation";
-
 // import useState
 import { useState } from "react";
 
@@ -18,9 +15,14 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
+// import i18n hook
+import { useTranslation } from "react-i18next";
+
 const Header = () => {
   // Loal states
   const [cartIsOpen, setCartIsOpen] = useState(false);
+
+  const {t} = useTranslation();
 
   return (
     <header className="header">
@@ -34,10 +36,10 @@ const Header = () => {
           <nav className="navBar">
             <ul className="navList">
               <li className="navItem">
-                <NavLink to="/">{t("home")}</NavLink>
+                <NavLink to="/">{t("header.home")}</NavLink>
               </li>
               <li className="navItem">
-                <NavLink to="/shop">Shop</NavLink>
+                <NavLink to="/shop">{t("header.shop")}</NavLink>
               </li>
             </ul>
           </nav>
